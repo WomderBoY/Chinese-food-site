@@ -1,0 +1,16 @@
+/* 响应式布局 */
+@media (max-width: 1200px) {
+    .container { padding: 16px; }
+}
+
+@media (max-width: 1024px) {
+    h1 { font-size: 2.2em; margin: 40px 0; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2em; margin: 32px 0; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.75em; margin: 28px 0; }
+}
