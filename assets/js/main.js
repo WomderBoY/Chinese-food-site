@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const input = document.getElementById('search-input');
     const results = document.getElementById('search-results');
+    const randomBtn = document.getElementById('random-btn');
+    const randomDisplay = document.getElementById('random-display');
     if (!input || !results) return;
 
     let lastKeyword = '';
@@ -110,4 +112,45 @@ document.addEventListener('DOMContentLoaded', function() {
             renderResults([]);
         }
     });
+
+    // 今天吃什么：随机滚动与停驻
+    if (randomBtn && randomDisplay) {
+        let rollingTimer = null;
+        let stopTimer = null;
+
+        function pickRandomIndex() {
+            return Math.floor(Math.random() * dishes.length);
+        }
+
+        function startRolling(durationMs) {
+            const interval = 70; // 滚动速度
+            rollingTimer = setInterval(() => {
+                const idx = pickRandomIndex();
+                const item = dishes[idx];
+                randomDisplay.textContent = item.name;
+            }, interval);
+
+            stopTimer = setTimeout(() => {
+                clearInterval(rollingTimer);
+                rollingTimer = null;
+                // 最终结果
+                const finalIdx = pickRandomIndex();
+                const finalItem = dishes[finalIdx];
+                randomDisplay.textContent = finalItem.name;
+                randomBtn.disabled = false;
+                // 点击结果跳转到菜品页面（可选但符合预期）
+                randomDisplay.onclick = () => { window.location.href = finalItem.url; };
+            }, durationMs);
+        }
+
+        randomBtn.addEventListener('click', function() {
+            if (rollingTimer) return; // 避免重复触发
+            randomBtn.disabled = true;
+            randomDisplay.onclick = null;
+            randomDisplay.textContent = '';
+            // 随机滚动 1.2s - 2.2s 之间
+            const duration = 1200 + Math.floor(Math.random() * 1000);
+            startRolling(duration);
+        });
+    }
 });
