@@ -1,3 +1,13 @@
+/* 首页头部：标题 + 搜索 */
+.home-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.home-hero h1 { margin: 0; }
+
 /* 首页八大菜系网格 */
 .cuisine-grid {
     display: grid;
@@ -45,6 +55,64 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: #333;
+}
+
+.search-section { flex: 1 1 420px; }
+.search-box { display: flex; justify-content: flex-end; }
+.search-box input {
+    width: 100%;
+    max-width: 520px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow .2s ease, border-color .2s ease;
+}
+.search-box input:focus {
+    border-color: #d32f2f;
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+}
+.search-results {
+    display: none;
+    max-width: 520px;
+    margin: 0.5rem 0 0 auto;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.search-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0.9rem;
+    color: #333;
+    text-decoration: none;
+}
+.search-item:hover { background: #f9f9fb; }
+.search-item .tag {
+    background: #fce4ec;
+    color: #c2185b;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+}
+/* 空结果提示 */
+.search-empty {
+    padding: 0.7rem 0.9rem;
+    color: #999;
+    text-align: left;
+}
+
+/* 响应式：中小屏标题与搜索上下堆叠 */
+@media (max-width: 768px) {
+    .home-hero { gap: 0.75rem; }
+    .search-section { flex-basis: 100%; }
+    .search-box { justify-content: center; }
+    .search-results { margin-left: auto; margin-right: auto; }
 }
 
 /* 响应式 */

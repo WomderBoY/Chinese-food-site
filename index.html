@@ -51,7 +51,16 @@
     </nav>
 
     <div class="container">
-        <h1>八大菜系</h1>
+        <div class="home-hero">
+            <h1>八大菜系</h1>
+            <!-- 搜索栏（标题右侧） -->
+            <section class="search-section" aria-label="菜品搜索">
+                <div class="search-box">
+                    <input id="search-input" type="text" placeholder="搜索菜名，如：糖醋鲤鱼、宫保鸡丁…" aria-label="搜索菜名">
+                </div>
+                <div id="search-results" class="search-results" role="listbox" aria-label="搜索结果"></div>
+            </section>
+        </div>
         
         <!-- 八大菜系方块网格 -->
         <section class="cuisine-grid" aria-label="八大菜系">
